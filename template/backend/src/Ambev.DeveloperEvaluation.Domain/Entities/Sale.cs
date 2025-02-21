@@ -27,7 +27,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// Gets or sets the unique number that identifies the sale.
         /// This number is typically used for reference purposes in the system.
         /// </summary>
-        public string SaleNumber { get; set; } = string.Empty;
+        public int SaleNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the date when the sale was made.

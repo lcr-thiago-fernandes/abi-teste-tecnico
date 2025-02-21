@@ -18,11 +18,13 @@ public class SaleConfiguration : IEntityTypeConfiguration<Sale>
 
         builder.Property(u => u.SaleNumber)
             .IsRequired()
-            .HasColumnType("varchar(50)");
+            .HasColumnType("integer") 
+            .UseIdentityColumn(); 
+
 
         builder.Property(u => u.SaleDate)
             .IsRequired()
-            .HasColumnType("timestamp");
+            .HasColumnType("timestamptz");
 
         builder.Property(u => u.Customer)
             .IsRequired()

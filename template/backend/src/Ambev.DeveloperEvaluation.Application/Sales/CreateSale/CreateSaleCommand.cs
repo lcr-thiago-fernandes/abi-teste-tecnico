@@ -6,8 +6,20 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
 
 public class CreateSaleCommand : IRequest<CreateSaleResult>
 {
-    
 
+    public DateTime SaleDate { get; set; }
+    public string Customer { get; set; } = string.Empty;
+    public string Branch { get; set; } = string.Empty;
+    public IList<CreateSaleItemCommand> Items { get; set; } = new List<CreateSaleItemCommand>();
+
+
+    public class CreateSaleItemCommand
+    {
+        public string Product { get; set; } = string.Empty;
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+
+    }
 
     public ValidationResultDetail Validate()
     {

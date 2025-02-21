@@ -8,6 +8,7 @@ using Ambev.DeveloperEvaluation.WebApi.Features.Sales.DeleteSale;
 using Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
 using Ambev.DeveloperEvaluation.Application.Sales.GetSale;
 using Ambev.DeveloperEvaluation.Application.Sales.DeleteSale;
+using Ambev.DeveloperEvaluation.Domain.Entities;
 
 
 /// <summary>
@@ -38,6 +39,9 @@ public class SalesController : BaseController
             return BadRequest(validationResult.Errors);
 
         var command = _mapper.Map<CreateSaleCommand>(request);
+
+        
+
         var response = await _mediator.Send(command, cancellationToken);
 
         return Created(string.Empty, new ApiResponseWithData<CreateSaleResponse>
