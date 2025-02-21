@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Sales\" />
+    <Folder Include="Sales\ListUser\" />
+    <Folder Include="Sales\UpdateUser\" />
   </ItemGroup>
 
 </Project>
