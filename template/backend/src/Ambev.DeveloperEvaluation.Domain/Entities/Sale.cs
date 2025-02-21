@@ -65,7 +65,35 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// </summary>
         public bool IsCancelled { get; set; }
 
-       
-    }
 
+        /// <summary>
+        /// Applies the discount based on the quantity of items purchased.
+        /// The discount is applied as follows:
+        /// - 10% for quantities between 4 and 9 items.
+        /// - 20% for quantities between 10 and 20 items.
+        /// - Throws an exception if the quantity exceeds 20 items.
+        /// </summary>
+        public void ApplyDiscount()
+        {
+            if(Items.Sum(x=>x.Quantity) > 20) 
+                throw new InvalidOperationException("Não é permitido vender mais de 20 unidades de um item.");
+
+            decimal totalAmount = 0;
+
+            foreach (var item in Items)
+            {
+                if (item.Quantity >= 4 && item.Quantity <= 9)
+                {
+                    item.Discount = 0.10m; // 10% discount for 4 to 9 items
+                }
+                else if (item.Quantity >= 10 && item.Quantity <= 20)
+                {
+                    item.Discount = 0.20m; // 20% discount for 10 to 20 items
+                }
+
+                TotalAmount = TotalAmount + (item.Quantity * item.UnitPrice * (1 - item.Discount));
+
+            }
+        }
+    }
 }

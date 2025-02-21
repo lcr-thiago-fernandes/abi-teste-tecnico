@@ -49,6 +49,8 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         /// </summary>
         public decimal TotalAmount { get; set; }
 
+
+
         
     }
 
